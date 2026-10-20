@@ -1,585 +1,702 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HeyyItsMe | Audio Guestbook</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter & Playfair Display -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brandBlue: '#1d4ed8',
-                        brandDark: '#0f172a',
-                        brandSoft: '#f8fafc',
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
+    
+    <style>
+        :root {
+            --primary-blue: #1d4ed8;
+            --dark-blue: #1e3a8a;
+            --bg-cream: #fbfbfa;
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+            --accent-gold: #d97706;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .serif-font {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 50px;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 5% 4rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Container Sections */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Audio Showcase Section */
+        .audio-showcase {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin-bottom: 4rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .audio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .audio-card {
+            background: var(--bg-cream);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .audio-card h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            color: var(--dark-blue);
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        /* Catalog Grid */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .phone-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phone-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+        }
+
+        .phone-img-container {
+            width: 100%;
+            height: 280px;
+            background: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .phone-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark-blue);
+            backdrop-filter: blur(4px);
+        }
+
+        .phone-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .phone-title {
+            font-size: 1.8rem;
+            color: var(--dark-blue);
+            margin-bottom: 0.25rem;
+        }
+
+        .phone-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Calendar Styles inside card */
+        .availability-box {
+            background: var(--bg-cream);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .availability-box h5 {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mini-calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+
+        .cal-day-header {
+            font-weight: 600;
+            color: var(--text-muted);
+            padding-bottom: 4px;
+        }
+
+        .cal-cell {
+            padding: 6px 0;
+            border-radius: 4px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+        }
+
+        .cal-cell.booked {
+            background: #fee2e2;
+            color: #991b1b;
+            text-decoration: line-through;
+            border-color: #fecaca;
+        }
+
+        .cal-cell.available {
+            background: #dcfce7;
+            color: #166534;
+            border-color: #bbf7d0;
+            font-weight: 600;
+        }
+
+        .select-phone-btn {
+            width: 100%;
+            background: transparent;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 0.7rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .select-phone-btn:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* Booking Section */
+        .booking-section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark-blue);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            background: var(--bg-cream);
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: #fff;
+        }
+
+        .submit-btn {
+            grid-column: span 2;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--dark-blue);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 5%;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            nav ul {
+                display: none;
             }
         }
-    </script>
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #FCFBFA; color: #1c1917; }
-        .font-serif { font-family: 'Playfair Display', serif; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
     </style>
 </head>
-<body class="bg-[#FCFBFA] text-stone-800 antialiased selection:bg-blue-600 selection:text-white">
+<body>
 
-    <header class="sticky top-0 z-50 bg-[#FCFBFA]/90 backdrop-blur-md border-b border-stone-200">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition">
-                    <i class="fa-solid fa-phone text-lg"></i>
-                </div>
-                <div>
-                    <span class="font-serif text-2xl font-bold tracking-tight text-stone-900">heyyitsme</span>
-                    <span class="block text-[10px] tracking-widest uppercase text-blue-600 font-semibold">Audio Guestbook</span>
-                </div>
-            </a>
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
-                <a href="#catalogue" class="hover:text-blue-600 transition">Catalogue</a>
-                <a href="#audio-samples" class="hover:text-blue-600 transition">Voice Samples</a>
-                <a href="#availability" class="hover:text-blue-600 transition">Availability</a>
-                <a href="#experience" class="hover:text-blue-600 transition">What's Included</a>
-            </nav>
-            <div>
-                <a href="#booking" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-full text-sm font-medium shadow-sm transition hover:shadow">
-                    Book Now
-                </a>
-            </div>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <!-- Logo menggunakan Logo2.png sesuai request -->
+            <img src="assets/images/Logo2.png" alt="HeyyItsMe Audio Guestbook">
         </div>
+        <nav>
+            <ul>
+                <li><a href="#catalogue">Collection</a></li>
+                <li><a href="#samples">Voice Samples</a></li>
+                <li><a href="#booking">Book Now</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="relative py-24 md:py-32 overflow-hidden bg-gradient-to-b from-blue-50/50 to-transparent">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6">
-                <div class="inline-flex items-center gap-2 bg-blue-100/80 text-blue-800 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase">
-                    <i class="fa-solid fa-heart text-blue-600"></i> Capture Every Voice & Memory
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Capture Voices, Preserve Memories</h1>
+        <p>A touch of vintage charm for modern celebrations. Let your loved ones leave heartfelt voice messages on our curated audio guestbooks.</p>
+        <a href="#catalogue" class="btn">Explore Collection</a>
+    </section>
+
+    <!-- Audio Sample Showcase -->
+    <section id="samples">
+        <div class="audio-showcase">
+            <h2 class="section-title">Listen to Sample Messages</h2>
+            <p class="section-subtitle">Hear what an authentic audio guestbook experience sounds like.</p>
+            <div class="audio-grid">
+                <div class="audio-card">
+                    <h4>Sample 1: Wedding Wishes</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">Recorded on The Victorian</p>
+                    <audio controls>
+                        <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
                 </div>
-                <h1 class="font-serif text-4xl md:text-6xl font-bold leading-tight tracking-tight text-stone-900">
-                    Preserve the laughter, tears, and wishes forever.
-                </h1>
-                <p class="text-stone-600 text-lg leading-relaxed font-light">
-                    Rent a vintage telephone audio guestbook for your wedding, engagement, or special celebration. Let your loved ones leave heartfelt voice messages you'll cherish for a lifetime.
-                </p>
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="#catalogue" class="bg-stone-900 hover:bg-stone-800 text-white px-8 py-3.5 rounded-full font-medium transition shadow-md">
-                        Explore Telephones
-                    </a>
-                    <a href="#availability" class="border border-stone-300 hover:border-stone-900 px-8 py-3.5 rounded-full font-medium transition text-stone-800">
-                        Check Calendar
-                    </a>
-                </div>
-            </div>
-            <div class="relative flex justify-center">
-                <div class="w-full max-w-md bg-white p-4 rounded-3xl shadow-2xl border border-stone-100 transform rotate-1 hover:rotate-0 transition duration-500">
-                    <div class="bg-stone-100 rounded-2xl overflow-hidden aspect-[4/5] relative flex items-center justify-center">
-                        <img src="https://placehold.co/600x750/1d4ed8/ffffff?text=HeyyItsMe+Audio+Guestbook" alt="Audio Guestbook Setup" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent flex items-end p-6">
-                            <div class="text-white">
-                                <span class="text-xs uppercase tracking-widest text-blue-300 font-semibold">Signature Collection</span>
-                                <h3 class="font-serif text-2xl font-bold">Timeless Elegance</h3>
-                            </div>
-                        </div>
-                    </div>
+                <div class="audio-card">
+                    <h4>Sample 2: Sweet Birthday Message</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">Recorded on Daphne (Yellow)</p>
+                    <audio controls>
+                        <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="audio-samples" class="py-20 bg-stone-900 text-white">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center space-y-4 mb-16">
-                <span class="text-blue-400 text-xs font-semibold tracking-widest uppercase">Listen to Real Memories</span>
-                <h2 class="font-serif text-3xl md:text-4xl font-bold">Hear What It Sounds Like</h2>
-                <p class="text-stone-400 max-w-xl mx-auto font-light">
-                    Click play below to listen to sample voice messages recorded by guests using our vintage rotary telephones.
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Audio Sample 1 -->
-                <div class="bg-stone-800/80 border border-stone-700/60 p-6 rounded-2xl flex flex-col justify-between shadow-lg">
-                    <div class="flex items-center justify-between mb-4">
-                        <div>
-                            <h4 class="font-medium text-stone-200">Sample Wedding Wish</h4>
-                            <p class="text-xs text-stone-400">Recorded on: The Victorian</p>
-                        </div>
-                        <span class="bg-blue-900/60 text-blue-300 px-3 py-1 rounded-full text-xs">0:24s</span>
-                    </div>
-                    <div class="flex items-center gap-4 mt-4">
-                        <button onclick="toggleAudio('audio1', this)" class="w-12 h-12 bg-blue-600 hover:bg-blue-500 rounded-full flex items-center justify-center text-white transition shadow-md">
-                            <i class="fa-solid fa-play ml-0.5"></i>
-                        </button>
-                        <div class="flex-1 bg-stone-700 h-2 rounded-full overflow-hidden relative">
-                            <div id="bar1" class="bg-blue-500 h-full w-0 transition-all duration-200"></div>
-                        </div>
-                    </div>
-                    <audio id="audio1" src="https://actions.google.com/sounds/v1/ambiences/coffee_shop.ogg" preload="none"></audio>
-                </div>
-                <!-- Audio Sample 2 -->
-                <div class="bg-stone-800/80 border border-stone-700/60 p-6 rounded-2xl flex flex-col justify-between shadow-lg">
-                    <div class="flex items-center justify-between mb-4">
-                        <div>
-                            <h4 class="font-medium text-stone-200">Birthday Party Prediction</h4>
-                            <p class="text-xs text-stone-400">Recorded on: Daphne (Yellow)</p>
-                        </div>
-                        <span class="bg-blue-900/60 text-blue-300 px-3 py-1 rounded-full text-xs">0:18s</span>
-                    </div>
-                    <div class="flex items-center gap-4 mt-4">
-                        <button onclick="toggleAudio('audio2', this)" class="w-12 h-12 bg-blue-600 hover:bg-blue-500 rounded-full flex items-center justify-center text-white transition shadow-md">
-                            <i class="fa-solid fa-play ml-0.5"></i>
-                        </button>
-                        <div class="flex-1 bg-stone-700 h-2 rounded-full overflow-hidden relative">
-                            <div id="bar2" class="bg-blue-500 h-full w-0 transition-all duration-200"></div>
-                        </div>
-                    </div>
-                    <audio id="audio2" src="https://actions.google.com/sounds/v1/ambiences/outdoor_playground.ogg" preload="none"></audio>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="catalogue" class="py-24 max-w-7xl mx-auto px-6">
-        <div class="text-center space-y-4 mb-16">
-            <span class="text-blue-600 text-xs font-semibold tracking-widest uppercase">The Collection</span>
-            <h2 class="font-serif text-3xl md:text-5xl font-bold text-stone-900">Choose Your Telephone</h2>
-            <p class="text-stone-600 max-w-2xl mx-auto font-light">
-                Each phone is meticulously restored, fully portable with a 20+ hour battery pack, and ready to match your event aesthetic.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+    <!-- Phone Catalogue Section -->
+    <section id="catalogue">
+        <h2 class="section-title">Our Phone Collection</h2>
+        <p class="section-subtitle">Select your preferred telephone model and check real-time availability for your date.</p>
+        
+        <div class="catalog-grid">
+            
             <!-- Daphne -->
-            <div class="bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition flex flex-col group">
-                <div class="bg-stone-100 h-64 overflow-hidden relative">
-                    <img src="https://placehold.co/600x600/fef08a/854d0e?text=Daphne+(Yellow)" alt="Daphne" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    <span class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-stone-800 shadow-sm">$290</span>
+            <div class="phone-card">
+                <div class="phone-img-container">
+                    <div style="color: #9ca3af; text-align: center;"><i class="fa-solid fa-camera fa-2x"></i><br>Daphne Photo</div>
+                    <span class="phone-badge">$290</span>
                 </div>
-                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    <div>
-                        <h3 class="font-serif text-2xl font-bold text-stone-900">Daphne</h3>
-                        <p class="text-sm text-stone-500 mt-1">The audio guestbook in sunshine yellow. Bright and cheerful.</p>
+                <div class="phone-content">
+                    <h3 class="phone-title">Daphne</h3>
+                    <p class="phone-desc">The audio guestbook in sunshine yellow. Bright, lively, and full of character.</p>
+                    
+                    <div class="availability-box">
+                        <h5><span>October 2026 Availability</span> <i class="fa-regular fa-calendar"></i></h5>
+                        <div class="mini-calendar">
+                            <div class="cal-day-header">M</div><div class="cal-day-header">T</div><div class="cal-day-header">W</div><div class="cal-day-header">T</div><div class="cal-day-header">F</div><div class="cal-day-header">S</div><div class="cal-day-header">S</div>
+                            <div class="cal-cell available">20</div><div class="cal-cell available">21</div><div class="cal-cell booked">22</div><div class="cal-cell booked">23</div><div class="cal-cell available">24</div><div class="cal-cell booked">25</div><div class="cal-cell available">26</div>
+                        </div>
                     </div>
-                    <button onclick="selectPhoneModel('Daphne')" class="w-full bg-stone-100 hover:bg-blue-600 hover:text-white text-stone-900 py-3 rounded-xl font-medium text-sm transition">
-                        Select This Model
-                    </button>
-                </div>
-            </div>
-
-            <!-- Marianne -->
-            <div class="bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition flex flex-col group">
-                <div class="bg-stone-100 h-64 overflow-hidden relative">
-                    <img src="https://placehold.co/600x600/fecdd3/9f1239?text=Marianne+(Pink)" alt="Marianne" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    <span class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-stone-800 shadow-sm">$290</span>
-                </div>
-                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    <div>
-                        <h3 class="font-serif text-2xl font-bold text-stone-900">Marianne</h3>
-                        <p class="text-sm text-stone-500 mt-1">Softly nostalgic and timeless in delicate pastel pink.</p>
-                    </div>
-                    <button onclick="selectPhoneModel('Marianne')" class="w-full bg-stone-100 hover:bg-blue-600 hover:text-white text-stone-900 py-3 rounded-xl font-medium text-sm transition">
-                        Select This Model
-                    </button>
-                </div>
-            </div>
-
-            <!-- Caecilia -->
-            <div class="bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition flex flex-col group">
-                <div class="bg-stone-100 h-64 overflow-hidden relative">
-                    <img src="https://placehold.co/600x600/f5f5f4/292524?text=Caecilia+(White)" alt="Caecilia" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    <span class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-stone-800 shadow-sm">$290</span>
-                </div>
-                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    <div>
-                        <h3 class="font-serif text-2xl font-bold text-stone-900">Caecilia</h3>
-                        <p class="text-sm text-stone-500 mt-1">White, elegant and quietly confident for any classic setting.</p>
-                    </div>
-                    <button onclick="selectPhoneModel('Caecilia')" class="w-full bg-stone-100 hover:bg-blue-600 hover:text-white text-stone-900 py-3 rounded-xl font-medium text-sm transition">
-                        Select This Model
-                    </button>
+                    <button class="select-phone-btn" onclick="selectPhone('Daphne')">Select Daphne</button>
                 </div>
             </div>
 
             <!-- The Chief -->
-            <div class="bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition flex flex-col group">
-                <div class="bg-stone-100 h-64 overflow-hidden relative">
-                    <img src="https://placehold.co/600x600/fee2e2/991b1b?text=The+Chief+(Red)" alt="The Chief" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    <span class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-stone-800 shadow-sm">$290</span>
+            <div class="phone-card">
+                <div class="phone-img-container">
+                    <div style="color: #9ca3af; text-align: center;"><i class="fa-solid fa-camera fa-2x"></i><br>The Chief Photo</div>
+                    <span class="phone-badge">$290</span>
                 </div>
-                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    <div>
-                        <h3 class="font-serif text-2xl font-bold text-stone-900">The Chief</h3>
-                        <p class="text-sm text-stone-500 mt-1">Commands attention while holding every voice in striking red.</p>
+                <div class="phone-content">
+                    <h3 class="phone-title">The Chief</h3>
+                    <p class="phone-desc">Commands attention while holding every voice with its striking red finish.</p>
+                    
+                    <div class="availability-box">
+                        <h5><span>October 2026 Availability</span> <i class="fa-regular fa-calendar"></i></h5>
+                        <div class="mini-calendar">
+                            <div class="cal-day-header">M</div><div class="cal-day-header">T</div><div class="cal-day-header">W</div><div class="cal-day-header">T</div><div class="cal-day-header">F</div><div class="cal-day-header">S</div><div class="cal-day-header">S</div>
+                            <div class="cal-cell available">20</div><div class="cal-cell booked">21</div><div class="cal-cell booked">22</div><div class="cal-cell available">23</div><div class="cal-cell available">24</div><div class="cal-cell available">25</div><div class="cal-cell available">26</div>
+                        </div>
                     </div>
-                    <button onclick="selectPhoneModel('The Chief')" class="w-full bg-stone-100 hover:bg-blue-600 hover:text-white text-stone-900 py-3 rounded-xl font-medium text-sm transition">
-                        Select This Model
-                    </button>
+                    <button class="select-phone-btn" onclick="selectPhone('The Chief')">Select The Chief</button>
+                </div>
+            </div>
+
+            <!-- Caecilia -->
+            <div class="phone-card">
+                <div class="phone-img-container">
+                    <div style="color: #9ca3af; text-align: center;"><i class="fa-solid fa-camera fa-2x"></i><br>Caecilia Photo</div>
+                    <span class="phone-badge">$290</span>
+                </div>
+                <div class="phone-content">
+                    <h3 class="phone-title">Caecilia</h3>
+                    <p class="phone-desc">White, elegant, and quietly confident. Perfect for classic wedding aesthetics.</p>
+                    
+                    <div class="availability-box">
+                        <h5><span>October 2026 Availability</span> <i class="fa-regular fa-calendar"></i></h5>
+                        <div class="mini-calendar">
+                            <div class="cal-day-header">M</div><div class="cal-day-header">T</div><div class="cal-day-header">W</div><div class="cal-day-header">T</div><div class="cal-day-header">F</div><div class="cal-day-header">S</div><div class="cal-day-header">S</div>
+                            <div class="cal-cell available">20</div><div class="cal-cell available">21</div><div class="cal-cell available">22</div><div class="cal-cell available">23</div><div class="cal-cell booked">24</div><div class="cal-cell booked">25</div><div class="cal-cell available">26</div>
+                        </div>
+                    </div>
+                    <button class="select-phone-btn" onclick="selectPhone('Caecilia')">Select Caecilia</button>
+                </div>
+            </div>
+
+            <!-- Marianne -->
+            <div class="phone-card">
+                <div class="phone-img-container">
+                    <div style="color: #9ca3af; text-align: center;"><i class="fa-solid fa-camera fa-2x"></i><br>Marianne Photo</div>
+                    <span class="phone-badge">$290</span>
+                </div>
+                <div class="phone-content">
+                    <h3 class="phone-title">Marianne</h3>
+                    <p class="phone-desc">Softly nostalgic and timeless in a gentle pink hue.</p>
+                    
+                    <div class="availability-box">
+                        <h5><span>October 2026 Availability</span> <i class="fa-regular fa-calendar"></i></h5>
+                        <div class="mini-calendar">
+                            <div class="cal-day-header">M</div><div class="cal-day-header">T</div><div class="cal-day-header">W</div><div class="cal-day-header">T</div><div class="cal-day-header">F</div><div class="cal-day-header">S</div><div class="cal-day-header">S</div>
+                            <div class="cal-cell booked">20</div><div class="cal-cell booked">21</div><div class="cal-cell available">22</div><div class="cal-cell available">23</div><div class="cal-cell available">24</div><div class="cal-cell available">25</div><div class="cal-cell available">26</div>
+                        </div>
+                    </div>
+                    <button class="select-phone-btn" onclick="selectPhone('Marianne')">Select Marianne</button>
                 </div>
             </div>
 
             <!-- The Chrome -->
-            <div class="bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition flex flex-col group">
-                <div class="bg-stone-100 h-64 overflow-hidden relative">
-                    <img src="https://placehold.co/600x600/e2e8f0/1e293b?text=The+Chrome" alt="The Chrome" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    <span class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-stone-800 shadow-sm">$320</span>
+            <div class="phone-card">
+                <div class="phone-img-container">
+                    <div style="color: #9ca3af; text-align: center;"><i class="fa-solid fa-camera fa-2x"></i><br>The Chrome Photo</div>
+                    <span class="phone-badge">$320</span>
                 </div>
-                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    <div>
-                        <h3 class="font-serif text-2xl font-bold text-stone-900">The Chrome</h3>
-                        <p class="text-sm text-stone-500 mt-1">Sleek, sculptural, and deliberate with modern metallic finish.</p>
+                <div class="phone-content">
+                    <h3 class="phone-title">The Chrome</h3>
+                    <p class="phone-desc">Sleek, sculptural, and deliberate. A modern metallic statement.</p>
+                    
+                    <div class="availability-box">
+                        <h5><span>October 2026 Availability</span> <i class="fa-regular fa-calendar"></i></h5>
+                        <div class="mini-calendar">
+                            <div class="cal-day-header">M</div><div class="cal-day-header">T</div><div class="cal-day-header">W</div><div class="cal-day-header">T</div><div class="cal-day-header">F</div><div class="cal-day-header">S</div><div class="cal-day-header">S</div>
+                            <div class="cal-cell available">20</div><div class="cal-cell available">21</div><div class="cal-cell available">22</div><div class="cal-cell booked">23</div><div class="cal-cell booked">24</div><div class="cal-cell available">25</div><div class="cal-cell available">26</div>
+                        </div>
                     </div>
-                    <button onclick="selectPhoneModel('The Chrome')" class="w-full bg-stone-100 hover:bg-blue-600 hover:text-white text-stone-900 py-3 rounded-xl font-medium text-sm transition">
-                        Select This Model
-                    </button>
+                    <button class="select-phone-btn" onclick="selectPhone('The Chrome')">Select The Chrome</button>
                 </div>
             </div>
 
             <!-- The Victorian -->
-            <div class="bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition flex flex-col group">
-                <div class="bg-stone-100 h-64 overflow-hidden relative">
-                    <img src="https://placehold.co/600x600/fef3c7/78350f?text=The+Victorian" alt="The Victorian" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    <span class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-stone-800 shadow-sm">$320</span>
+            <div class="phone-card">
+                <div class="phone-img-container">
+                    <div style="color: #9ca3af; text-align: center;"><i class="fa-solid fa-camera fa-2x"></i><br>The Victorian Photo</div>
+                    <span class="phone-badge">$320</span>
                 </div>
-                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    <div>
-                        <h3 class="font-serif text-2xl font-bold text-stone-900">The Victorian</h3>
-                        <p class="text-sm text-stone-500 mt-1">Elegant, poised, with just the right amount of vintage drama.</p>
+                <div class="phone-content">
+                    <h3 class="phone-title">The Victorian</h3>
+                    <p class="phone-desc">Elegant, poised, with just the right amount of vintage drama.</p>
+                    
+                    <div class="availability-box">
+                        <h5><span>October 2026 Availability</span> <i class="fa-regular fa-calendar"></i></h5>
+                        <div class="mini-calendar">
+                            <div class="cal-day-header">M</div><div class="cal-day-header">T</div><div class="cal-day-header">W</div><div class="cal-day-header">T</div><div class="cal-day-header">F</div><div class="cal-day-header">S</div><div class="cal-day-header">S</div>
+                            <div class="cal-cell available">20</div><div class="cal-cell booked">21</div><div class="cal-cell available">22</div><div class="cal-cell available">23</div><div class="cal-cell available">24</div><div class="cal-cell booked">25</div><div class="cal-cell booked">26</div>
+                        </div>
                     </div>
-                    <button onclick="selectPhoneModel('The Victorian')" class="w-full bg-stone-100 hover:bg-blue-600 hover:text-white text-stone-900 py-3 rounded-xl font-medium text-sm transition">
-                        Select This Model
-                    </button>
+                    <button class="select-phone-btn" onclick="selectPhone('The Victorian')">Select The Victorian</button>
                 </div>
             </div>
 
             <!-- The Duke -->
-            <div class="bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition flex flex-col group md:col-span-2 lg:col-span-1">
-                <div class="bg-stone-100 h-64 overflow-hidden relative">
-                    <img src="https://placehold.co/600x600/d1d5db/1f2937?text=The+Duke" alt="The Duke" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    <span class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-stone-800 shadow-sm">$320</span>
+            <div class="phone-card">
+                <div class="phone-img-container">
+                    <div style="color: #9ca3af; text-align: center;"><i class="fa-solid fa-camera fa-2x"></i><br>The Duke Photo</div>
+                    <span class="phone-badge">$320</span>
                 </div>
-                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    <div>
-                        <h3 class="font-serif text-2xl font-bold text-stone-900">The Duke</h3>
-                        <p class="text-sm text-stone-500 mt-1">Enduring elegance, by design. Classic bronze detailing.</p>
+                <div class="phone-content">
+                    <h3 class="phone-title">The Duke</h3>
+                    <p class="phone-desc">Enduring elegance, crafted by design for sophisticated celebrations.</p>
+                    
+                    <div class="availability-box">
+                        <h5><span>October 2026 Availability</span> <i class="fa-regular fa-calendar"></i></h5>
+                        <div class="mini-calendar">
+                            <div class="cal-day-header">M</div><div class="cal-day-header">T</div><div class="cal-day-header">W</div><div class="cal-day-header">T</div><div class="cal-day-header">F</div><div class="cal-day-header">S</div><div class="cal-day-header">S</div>
+                            <div class="cal-cell available">20</div><div class="cal-cell available">21</div><div class="cal-cell booked">22</div><div class="cal-cell available">23</div><div class="cal-cell available">24</div><div class="cal-cell available">25</div><div class="cal-cell booked">26</div>
+                        </div>
                     </div>
-                    <button onclick="selectPhoneModel('The Duke')" class="w-full bg-stone-100 hover:bg-blue-600 hover:text-white text-stone-900 py-3 rounded-xl font-medium text-sm transition">
-                        Select This Model
-                    </button>
+                    <button class="select-phone-btn" onclick="selectPhone('The Duke')">Select The Duke</button>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <section id="availability" class="py-24 bg-blue-50/60 border-y border-stone-200/60">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center space-y-4 mb-12">
-                <span class="text-blue-600 text-xs font-semibold tracking-widest uppercase">Live Availability Check</span>
-                <h2 class="font-serif text-3xl md:text-4xl font-bold text-stone-900">Check Model Calendar</h2>
-                <p class="text-stone-600 font-light">
-                    Select a telephone model below to view its availability calendar for October 2026. Click any available green date to instantly select it!
-                </p>
-            </div>
-
-            <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-200 space-y-6">
-                <!-- Phone Selector Tabs -->
-                <div class="flex flex-wrap gap-2 justify-center pb-4 border-b border-stone-100" id="calendar-tabs">
-                    <button onclick="switchCalendar('Daphne')" class="cal-tab px-4 py-2 rounded-full text-xs font-medium bg-blue-600 text-white transition">Daphne</button>
-                    <button onclick="switchCalendar('Marianne')" class="cal-tab px-4 py-2 rounded-full text-xs font-medium bg-stone-100 text-stone-700 hover:bg-stone-200 transition">Marianne</button>
-                    <button onclick="switchCalendar('Caecilia')" class="cal-tab px-4 py-2 rounded-full text-xs font-medium bg-stone-100 text-stone-700 hover:bg-stone-200 transition">Caecilia</button>
-                    <button onclick="switchCalendar('The Chief')" class="cal-tab px-4 py-2 rounded-full text-xs font-medium bg-stone-100 text-stone-700 hover:bg-stone-200 transition">The Chief</button>
-                    <button onclick="switchCalendar('The Chrome')" class="cal-tab px-4 py-2 rounded-full text-xs font-medium bg-stone-100 text-stone-700 hover:bg-stone-200 transition">The Chrome</button>
-                    <button onclick="switchCalendar('The Victorian')" class="cal-tab px-4 py-2 rounded-full text-xs font-medium bg-stone-100 text-stone-700 hover:bg-stone-200 transition">The Victorian</button>
-                    <button onclick="switchCalendar('The Duke')" class="cal-tab px-4 py-2 rounded-full text-xs font-medium bg-stone-100 text-stone-700 hover:bg-stone-200 transition">The Duke</button>
+    <!-- Booking Form Section -->
+    <section id="booking">
+        <div class="booking-section">
+            <h2 class="section-title" style="text-align: left;">Reserve Your Experience</h2>
+            <p class="section-subtitle" style="text-align: left; margin-bottom: 1.5rem;">Fill out the form below to secure your date and audio guestbook model.</p>
+            
+            <form class="booking-form" onsubmit="handleBooking(event)">
+                <div class="form-group">
+                    <label>Full Name + Partner's Name</label>
+                    <input type="text" placeholder="e.g. Sarah & James" required>
                 </div>
-
-                <!-- Calendar Header -->
-                <div class="flex items-center justify-between">
-                    <h3 id="current-month-label" class="font-serif text-xl font-bold text-stone-900">October 2026</h3>
-                    <div class="flex items-center gap-2 text-xs text-stone-500">
-                        <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span> Available</span>
-                        <span class="flex items-center gap-1 ml-3"><span class="w-3 h-3 rounded-full bg-rose-400 inline-block"></span> Booked</span>
-                    </div>
+                <div class="form-group">
+                    <label>Instagram Handle</label>
+                    <input type="text" placeholder="@yourhandle" required>
                 </div>
-
-                <!-- Calendar Grid Container -->
-                <div id="calendar-grid" class="grid grid-cols-7 gap-2 text-center text-sm">
-                    <!-- Populated dynamically via JS -->
+                <div class="form-group">
+                    <label>Event Type</label>
+                    <select required>
+                        <option value="">Select Event Type</option>
+                        <option value="Wedding">Wedding</option>
+                        <option value="Engagement">Engagement Party</option>
+                        <option value="Birthday">Birthday</option>
+                        <option value="Baby Shower">Baby Shower</option>
+                        <option value="Other">Other</option>
+                    </select>
                 </div>
-
-                <div class="text-center pt-2">
-                    <p class="text-xs text-stone-500">Dates shown in green are open for booking. Click an available date to select it for your order.</p>
+                <div class="form-group">
+                    <label>Date of Your Event</label>
+                    <input type="date" required>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="booking" class="py-24 max-w-3xl mx-auto px-6">
-        <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-stone-200 space-y-8">
-            <div class="text-center space-y-3">
-                <span class="text-blue-600 text-xs font-semibold tracking-widest uppercase">Secure Your Date</span>
-                <h2 class="font-serif text-3xl font-bold text-stone-900">Audio Guestbook Booking Form</h2>
-                <p class="text-stone-600 text-sm font-light">Fill out the details below to reserve your telephone experience.</p>
-            </div>
-
-            <form id="booking-form" onsubmit="handleBooking(event)" class="space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-2">Full Name + Partner's Name *</label>
-                        <input type="text" id="client-name" required placeholder="e.g., Sarah & David" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-600">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-2">Instagram Handle *</label>
-                        <input type="text" id="instagram-handle" required placeholder="@heyyitsme_nz" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-600">
-                    </div>
+                <div class="form-group">
+                    <label>First-Choice Audio Guestbook</label>
+                    <select id="first-choice" required>
+                        <option value="">Select Model</option>
+                        <option value="Daphne">Daphne (Yellow) - $290</option>
+                        <option value="The Chief">The Chief (Red) - $290</option>
+                        <option value="Caecilia">Caecilia (White) - $290</option>
+                        <option value="Marianne">Marianne (Pink) - $290</option>
+                        <option value="The Chrome">The Chrome - $320</option>
+                        <option value="The Victorian">The Victorian - $320</option>
+                        <option value="The Duke">The Duke - $320</option>
+                    </select>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-2">Event Type *</label>
-                        <select id="event-type" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-600">
-                            <option value="Wedding">Wedding</option>
-                            <option value="Engagement Party">Engagement Party</option>
-                            <option value="Birthday">Birthday</option>
-                            <option value="Baby Shower">Baby Shower</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-2">Event Date *</label>
-                        <input type="date" id="event-date" required class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-600">
-                    </div>
+                <div class="form-group">
+                    <label>Second-Choice Audio Guestbook</label>
+                    <select required>
+                        <option value="">Select Model</option>
+                        <option value="Daphne">Daphne (Yellow) - $290</option>
+                        <option value="The Chief">The Chief (Red) - $290</option>
+                        <option value="Caecilia">Caecilia (White) - $290</option>
+                        <option value="Marianne">Marianne (Pink) - $290</option>
+                        <option value="The Chrome">The Chrome - $320</option>
+                        <option value="The Victorian">The Victorian - $320</option>
+                        <option value="The Duke">The Duke - $320</option>
+                    </select>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-2">First-Choice Telephone *</label>
-                        <select id="phone-choice-1" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-600">
-                            <option value="Daphne">Daphne ($290)</option>
-                            <option value="Marianne">Marianne ($290)</option>
-                            <option value="Caecilia">Caecilia ($290)</option>
-                            <option value="The Chief">The Chief ($290)</option>
-                            <option value="The Chrome">The Chrome ($320)</option>
-                            <option value="The Victorian">The Victorian ($320)</option>
-                            <option value="The Duke">The Duke ($320)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-2">Second-Choice Telephone *</label>
-                        <select id="phone-choice-2" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-600">
-                            <option value="Daphne">Daphne ($290)</option>
-                            <option value="Marianne">Marianne ($290)</option>
-                            <option value="Caecilia">Caecilia ($290)</option>
-                            <option value="The Chief">The Chief ($290)</option>
-                            <option value="The Chrome">The Chrome ($320)</option>
-                            <option value="The Victorian">The Victorian ($320)</option>
-                            <option value="The Duke">The Duke ($320)</option>
-                        </select>
-                    </div>
+                <div class="form-group full-width">
+                    <label>Shipping Address</label>
+                    <textarea rows="3" placeholder="Where should we ship your audio guestbook 4-7 days before your event?" required></textarea>
                 </div>
-
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-2">Shipping Address *</label>
-                    <textarea id="shipping-address" rows="3" required placeholder="Enter delivery address (shipped 4-7 days before event)" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-600"></textarea>
+                <div class="form-group">
+                    <label>Contact Number</label>
+                    <input type="tel" placeholder="+64 ..." required>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-2">Contact Number *</label>
-                        <input type="tel" id="contact-number" required placeholder="+64 ..." class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-600">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-2">Email Address *</label>
-                        <input type="email" id="contact-email" required placeholder="you@example.com" class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-600">
-                    </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="you@example.com" required>
                 </div>
-
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-2">Photographer / Vendors (Optional)</label>
-                    <input type="text" id="vendors" placeholder="Instagram handles of photographer, florist, venue, etc." class="w-full bg-stone-50 border border-stone-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-600">
-                </div>
-
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-medium tracking-wide transition shadow-md">
-                    Submit Booking Request
-                </button>
+                <button type="submit" class="submit-btn">Submit Booking Request</button>
             </form>
         </div>
     </section>
 
-    <section id="experience" class="py-20 bg-stone-900 text-white">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6">
-                <span class="text-blue-400 text-xs font-semibold tracking-widest uppercase">Included in Your Experience</span>
-                <h2 class="font-serif text-3xl md:text-4xl font-bold">Everything you need for seamless audio memories.</h2>
-                <ul class="space-y-4 text-stone-300 font-light">
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-blue-500"><span>Your selected vintage audio guestbook phone</span></i></li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-blue-500"><span>Detailed setup instructions & easy plug-and-play</span></i></li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-blue-500"><span>Rechargeable battery pack (20+ hours battery life)</span></i></li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-blue-500"><span>Ready-to-print digital signs for your event table</span></i></li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-blue-500"><span>Digital copy of all recorded voice messages sent via cloud</span></i></li>
-                    <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-blue-500"><span>Prepaid return shipping label included</span></i></li>
-                </ul>
-            </div>
-            <div class="bg-stone-800 p-8 rounded-3xl border border-stone-700/60 space-y-6">
-                <h3 class="font-serif text-2xl font-bold">Have Questions?</h3>
-                <p class="text-stone-400 text-sm font-light">
-                    Reach out to us directly on Instagram or drop us a line. We're excited to be part of your special celebration!
-                </p>
-                <a href="https://www.instagram.com/heyyitsme_nz" target="_blank" class="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white px-6 py-3 rounded-xl font-medium text-sm shadow hover:opacity-90 transition">
-                    <i class="fa-brands fa-instagram text-lg"></i> Follow @heyyitsme_nz
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Custom Success Modal -->
-    <div id="success-modal" class="fixed inset-0 bg-stone-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-6">
-        <div class="bg-white max-w-md w-full p-8 rounded-3xl text-center space-y-4 shadow-2xl">
-            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl">
-                <i class="fa-solid fa-check"></i>
-            </div>
-            <h3 class="font-serif text-2xl font-bold text-stone-900">Booking Submitted!</h3>
-            <p id="modal-message" class="text-stone-600 text-sm font-light">Thank you for booking with HeyyItsMe. We will review your date and get in touch via email soon ✨</p>
-            <button onclick="closeModal()" class="w-full bg-stone-900 text-white py-3 rounded-xl font-medium text-sm hover:bg-stone-800 transition">
-                Close
-            </button>
-        </div>
-    </div>
-
-    <footer class="py-12 border-t border-stone-200 text-center text-xs text-stone-500">
+    <!-- Footer -->
+    <footer>
         <p>&copy; 2026 HeyyItsMe Audio Guestbook. All rights reserved.</p>
     </footer>
 
     <script>
-        // Mock availability data for each phone model in October 2026
-        const availabilityData = {
-            "Daphne": [3, 4, 10, 11, 12, 18, 19, 25, 26],
-            "Marianne": [3, 4, 11, 17, 18, 24, 25],
-            "Caecilia": [10, 11, 17, 18, 24, 25, 31],
-            "The Chief": [3, 4, 10, 11, 18, 19, 25],
-            "The Chrome": [4, 11, 18, 25],
-            "The Victorian": [3, 10, 17, 24, 31],
-            "The Duke": [3, 4, 17, 18, 31]
-        };
-
-        let currentSelectedPhone = "Daphne";
-
-        function switchCalendar(phoneModel) {
-            currentSelectedPhone = phoneModel;
-            document.querySelectorAll('.cal-tab').forEach(btn => {
-                if (btn.textContent === phoneModel) {
-                    btn.className = "cal-tab px-4 py-2 rounded-full text-xs font-medium bg-blue-600 text-white transition";
-                } else {
-                    btn.className = "cal-tab px-4 py-2 rounded-full text-xs font-medium bg-stone-100 text-stone-700 hover:bg-stone-200 transition";
-                }
-            });
-            renderCalendar(phoneModel);
-        }
-
-        function renderCalendar(phoneModel) {
-            const grid = document.getElementById('calendar-grid');
-            grid.innerHTML = '';
-            
-            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            days.forEach(d => {
-                const dayEl = document.createElement('div');
-                dayEl.className = "font-semibold text-stone-400 text-xs py-2";
-                dayEl.textContent = d;
-                grid.appendChild(dayEl);
-            });
-
-            const startDayOffset = 4; // October 2026 starts on Thursday
-            const totalDays = 31;
-            const availableDays = availabilityData[phoneModel] || [];
-
-            for (let i = 0; i < startDayOffset; i++) {
-                const emptyEl = document.createElement('div');
-                grid.appendChild(emptyEl);
-            }
-
-            for (let day = 1; day <= totalDays; day++) {
-                const dayBtn = document.createElement('button');
-                const isAvailable = availableDays.includes(day);
-                
-                dayBtn.className = `py-2.5 rounded-xl text-xs font-medium transition flex flex-col items-center justify-center gap-1 ${
-                    isAvailable 
-                        ? 'bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 cursor-pointer' 
-                        : 'bg-stone-100 text-stone-400 opacity-60 cursor-not-allowed'
-                }`;
-                
-                dayBtn.innerHTML = `<span>${day}</span><span class="w-1.5 h-1.5 rounded-full ${isAvailable ? 'bg-emerald-500' : 'bg-rose-400'}"></span>`;
-                
-                if (isAvailable) {
-                    dayBtn.onclick = () => {
-                        document.getElementById('event-date').value = `2026-10-${day < 10 ? '0' + day : day}`;
-                        document.getElementById('phone-choice-1').value = phoneModel;
-                        document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-                    };
-                }
-                grid.appendChild(dayBtn);
-            }
-        }
-
-        window.onload = () => {
-            renderCalendar("Daphne");
-        };
-
-        function selectPhoneModel(modelName) {
-            document.getElementById('phone-choice-1').value = modelName;
+        function selectPhone(phoneName) {
+            const selectDropdown = document.getElementById('first-choice');
+            selectDropdown.value = phoneName;
             document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function toggleAudio(audioId, btnEl) {
-            const audio = document.getElementById(audioId);
-            const icon = btnEl.querySelector('i');
-            const barId = audioId === 'audio1' ? 'bar1' : 'bar2';
-            const bar = document.getElementById(barId);
-
-            if (audio.paused) {
-                audio.play().catch(e => console.log("Audio playback simulated"));
-                icon.className = "fa-solid fa-pause ml-0.5";
-                
-                let width = 0;
-                window[audioId + 'Interval'] = setInterval(() => {
-                    width += 2;
-                    if (width > 100) width = 100;
-                    bar.style.width = width + '%';
-                    if (width >= 100) {
-                        clearInterval(window[audioId + 'Interval']);
-                        icon.className = "fa-solid fa-play ml-0.5";
-                    }
-                }, 250);
-            } else {
-                audio.pause();
-                icon.className = "fa-solid fa-play ml-0.5";
-                clearInterval(window[audioId + 'Interval']);
-            }
-        }
-
-        function handleBooking(e) {
-            e.preventDefault();
-            const name = document.getElementById('client-name').value;
-            const phone = document.getElementById('phone-choice-1').value;
-            const date = document.getElementById('event-date').value;
-            
-            document.getElementById('modal-message').textContent = `Thank you ${name}! Your booking request for ${phone} on ${date} has been received. We will contact you soon.`;
-            document.getElementById('success-modal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('success-modal').classList.add('hidden');
-            document.getElementById('booking-form').reset();
+        function handleBooking(event) {
+            event.preventDefault();
+            alert('Thank you for your booking request! We will get in touch via email soon ✨');
+            event.target.reset();
         }
     </script>
 </body>
