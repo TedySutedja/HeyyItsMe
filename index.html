@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeyyItsMe | Audio Guestbook</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#1d3557',
+                        brandCream: '#fcfbf9',
+                        brandAccent: '#457b9d',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="bg-brandCream text-gray-800 font-sans antialiased selection:bg-brandBlue selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-brandCream/90 backdrop-blur-md border-b border-gray-200/55">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-serif text-2xl font-bold tracking-wider text-brandBlue">
+                HeyyItsMe <span class="text-xs font-sans block uppercase tracking-widest text-gray-500">Audio Guestbook</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                <a href="#collection" class="hover:text-brandAccent transition">The Collection</a>
+                <a href="#how-it-works" class="hover:text-brandAccent transition">How It Works</a>
+                <a href="#included" class="hover:text-brandAccent transition">Inclusions</a>
+            </nav>
+            <a href="#collection" class="hidden sm:inline-block px-5 py-2.5 rounded-full border border-brandBlue text-brandBlue text-sm font-medium hover:bg-brandBlue hover:text-white transition duration-300">
+                Check Availability
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION WITH ORGANIC CURVED BOTTOM -->
+    <section class="relative pt-32 pb-32 md:pt-44 md:pb-40 overflow-hidden bg-gradient-to-b from-brandCream via-amber-50/30 to-white">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="space-y-6">
+                <span class="inline-block uppercase tracking-widest text-xs font-semibold text-brandAccent bg-brandAccent/10 px-4 py-1.5 rounded-full shadow-sm">
+                    Modern Vintage Experience
+                </span>
+                <h1 class="font-serif text-4xl md:text-6xl font-bold leading-tight text-brandBlue">
+                    Capture the voices, laughter, and wishes to keep for a lifetime.
+                </h1>
+                <p class="text-lg text-gray-600 font-light leading-relaxed">
+                    Swap out the traditional guestbook for an elegant, vintage-inspired Audio Guestbook. Let your guests leave heartfelt voice messages at your wedding, birthday, or celebration that you can listen back to forever.
+                </p>
+                <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                    <a href="#collection" class="px-8 py-4 bg-brandBlue text-white font-medium rounded-full shadow-xl hover:bg-brandBlue/90 hover:scale-105 transition transform text-center">
+                        Choose Your Telephone
+                    </a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute -inset-2 rounded-[3rem] bg-gradient-to-tr from-brandAccent/30 to-brandBlue/10 blur-2xl -z-10"></div>
+                <!-- Curved organic image frame -->
+                <div class="rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white bg-amber-50 h-[480px] flex flex-col items-center justify-center p-8 text-center relative group">
+                    <div class="absolute inset-0 bg-brandBlue/5 group-hover:bg-transparent transition duration-500"></div>
+                    <span class="text-7xl mb-4 transform group-hover:scale-110 transition duration-300">☎️</span>
+                    <h3 class="font-serif text-3xl font-bold text-brandBlue mb-2">The Duke</h3>
+                    <p class="text-sm text-gray-500 italic">Enduring elegance, by design</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Wave Divider at Bottom of Hero -->
+        <div class="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-0">
+            <svg class="relative block w-full h-12 text-white" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z" fill="currentColor"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-xs uppercase tracking-widest text-brandAccent font-semibold">Effortless & Memorable</span>
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-brandBlue">Simple. Elegant. Timeless.</h2>
+                <p class="text-gray-600">How your guests interact with the audio guestbook in 3 effortless steps.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="p-8 rounded-[2rem] bg-gradient-to-br from-brandCream to-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-brandBlue text-white flex items-center justify-center font-serif text-xl font-bold shadow-md">01</div>
+                    <h3 class="text-2xl font-serif font-semibold text-brandBlue">Pick Up</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Guests lift the vintage handset and listen to your personalised greeting message.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="p-8 rounded-[2rem] bg-gradient-to-br from-brandCream to-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-brandAccent text-white flex items-center justify-center font-serif text-xl font-bold shadow-md">02</div>
+                    <h3 class="text-2xl font-serif font-semibold text-brandBlue">Speak</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">After the beep, they leave their best advice, happy memories, or celebration cheers.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="p-8 rounded-[2rem] bg-gradient-to-br from-brandCream to-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-brandBlue text-white flex items-center justify-center font-serif text-xl font-bold shadow-md">03</div>
+                    <h3 class="text-2xl font-serif font-semibold text-brandBlue">Hang Up</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Simply place the handset back down, and the message is securely saved automatically!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLLECTION / PRICING CATALOG -->
+    <section id="collection" class="py-24 bg-brandCream/50 relative">
+        <!-- Top organic curve -->
+        <div class="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none rotate-180 z-0">
+            <svg class="relative block w-full h-8 text-white" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z" fill="currentColor"></path>
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 pt-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-xs uppercase tracking-widest text-brandAccent font-semibold">The Lookbook</span>
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-brandBlue">Find Your Statement Piece</h2>
+                <p class="text-gray-600">Select the perfect telephone style to match your event theme and aesthetic.</p>
+            </div>
+
+            <!-- Grid Produk with Rounded Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Daphne -->
+                <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 border border-gray-100 flex flex-col justify-between group">
+                    <div class="h-64 bg-amber-100/50 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brandAccent/5 group-hover:scale-110 transition duration-500"></div>
+                        <span class="text-6xl transform group-hover:rotate-6 transition duration-300">☎️</span>
+                    </div>
+                    <div class="p-8 space-y-3">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-serif text-2xl font-bold text-brandBlue">Daphne</h3>
+                            <span class="text-xl font-semibold text-brandAccent">$290</span>
+                        </div>
+                        <p class="text-sm text-gray-500 italic">The Audio guestbook in sunshine yellow.</p>
+                    </div>
+                    <div class="px-8 pb-8">
+                        <a href="#checkout" class="block w-full py-3.5 text-center bg-gray-50 hover:bg-brandBlue hover:text-white rounded-2xl text-sm font-medium transition duration-300 shadow-sm">Hire This Model</a>
+                    </div>
+                </div>
+
+                <!-- The Chief -->
+                <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 border border-gray-100 flex flex-col justify-between group">
+                    <div class="h-64 bg-slate-100/50 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brandAccent/5 group-hover:scale-110 transition duration-500"></div>
+                        <span class="text-6xl transform group-hover:rotate-6 transition duration-300">📞</span>
+                    </div>
+                    <div class="p-8 space-y-3">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-serif text-2xl font-bold text-brandBlue">The Chief</h3>
+                            <span class="text-xl font-semibold text-brandAccent">$290</span>
+                        </div>
+                        <p class="text-sm text-gray-500 italic">Commands attention while holding every voice.</p>
+                    </div>
+                    <div class="px-8 pb-8">
+                        <a href="#checkout" class="block w-full py-3.5 text-center bg-gray-50 hover:bg-brandBlue hover:text-white rounded-2xl text-sm font-medium transition duration-300 shadow-sm">Hire This Model</a>
+                    </div>
+                </div>
+
+                <!-- Caecilia -->
+                <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 border border-gray-100 flex flex-col justify-between group">
+                    <div class="h-64 bg-zinc-100/50 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brandAccent/5 group-hover:scale-110 transition duration-500"></div>
+                        <span class="text-6xl transform group-hover:rotate-6 transition duration-300">☎️</span>
+                    </div>
+                    <div class="p-8 space-y-3">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-serif text-2xl font-bold text-brandBlue">Caecilia</h3>
+                            <span class="text-xl font-semibold text-brandAccent">$290</span>
+                        </div>
+                        <p class="text-sm text-gray-500 italic">White, elegant and quietly confident.</p>
+                    </div>
+                    <div class="px-8 pb-8">
+                        <a href="#checkout" class="block w-full py-3.5 text-center bg-gray-50 hover:bg-brandBlue hover:text-white rounded-2xl text-sm font-medium transition duration-300 shadow-sm">Hire This Model</a>
+                    </div>
+                </div>
+
+                <!-- Marianne -->
+                <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 border border-gray-100 flex flex-col justify-between group">
+                    <div class="h-64 bg-rose-50/50 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brandAccent/5 group-hover:scale-110 transition duration-500"></div>
+                        <span class="text-6xl transform group-hover:rotate-6 transition duration-300">☎️</span>
+                    </div>
+                    <div class="p-8 space-y-3">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-serif text-2xl font-bold text-brandBlue">Marianne</h3>
+                            <span class="text-xl font-semibold text-brandAccent">$290</span>
+                        </div>
+                        <p class="text-sm text-gray-500 italic">Softly nostalgic and timeless.</p>
+                    </div>
+                    <div class="px-8 pb-8">
+                        <a href="#checkout" class="block w-full py-3.5 text-center bg-gray-50 hover:bg-brandBlue hover:text-white rounded-2xl text-sm font-medium transition duration-300 shadow-sm">Hire This Model</a>
+                    </div>
+                </div>
+
+                <!-- The Chrome -->
+                <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 border border-gray-100 flex flex-col justify-between group">
+                    <div class="h-64 bg-sky-50/50 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brandAccent/5 group-hover:scale-110 transition duration-500"></div>
+                        <span class="text-6xl transform group-hover:rotate-6 transition duration-300">📞</span>
+                    </div>
+                    <div class="p-8 space-y-3">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-serif text-2xl font-bold text-brandBlue">The Chrome</h3>
+                            <span class="text-xl font-semibold text-brandAccent">$320</span>
+                        </div>
+                        <p class="text-sm text-gray-500 italic">Sleek, sculptural and deliberate guestbook.</p>
+                    </div>
+                    <div class="px-8 pb-8">
+                        <a href="#checkout" class="block w-full py-3.5 text-center bg-gray-50 hover:bg-brandBlue hover:text-white rounded-2xl text-sm font-medium transition duration-300 shadow-sm">Hire This Model</a>
+                    </div>
+                </div>
+
+                <!-- The Victorian & The Duke -->
+                <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 border border-gray-100 flex flex-col justify-between group">
+                    <div class="h-64 bg-amber-50/50 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-brandAccent/5 group-hover:scale-110 transition duration-500"></div>
+                        <span class="text-6xl transform group-hover:rotate-6 transition duration-300">☎️</span>
+                    </div>
+                    <div class="p-8 space-y-3">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-serif text-2xl font-bold text-brandBlue">The Victorian / Duke</h3>
+                            <span class="text-xl font-semibold text-brandAccent">$320</span>
+                        </div>
+                        <p class="text-sm text-gray-500 italic">Enduring elegance, poise, and drama by design.</p>
+                    </div>
+                    <div class="px-8 pb-8">
+                        <a href="#checkout" class="block w-full py-3.5 text-center bg-gray-50 hover:bg-brandBlue hover:text-white rounded-2xl text-sm font-medium transition duration-300 shadow-sm">Hire This Model</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT'S INCLUDED WITH CURVED EDGES -->
+    <section id="included" class="py-24 bg-brandBlue text-white relative overflow-hidden rounded-[3rem] max-w-7xl mx-auto my-12 shadow-2xl">
+        <!-- Decorative background glow circles -->
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-brandAccent/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-brandAccent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="space-y-6">
+                <span class="text-xs uppercase tracking-widest text-brandAccent bg-white/10 px-4 py-1.5 rounded-full inline-block font-semibold">Complete Package</span>
+                <h2 class="font-serif text-3xl md:text-5xl font-bold leading-tight">Everything Included in Your Hire</h2>
+                <p class="text-gray-300 font-light leading-relaxed">We make the entire setup completely seamless so you can focus entirely on enjoying your celebration.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="flex items-start space-x-4 bg-white/10 p-5 rounded-2xl backdrop-blur-md border border-white/10">
+                    <span class="text-brandAccent text-xl font-bold">✓</span>
+                    <p class="text-sm leading-relaxed">Your selected audio guestbook.</p>
+                </div>
+                <div class="flex items-start space-x-4 bg-white/10 p-5 rounded-2xl backdrop-blur-md border border-white/10">
+                    <span class="text-brandAccent text-xl font-bold">✓</span>
+                    <p class="text-sm leading-relaxed">Detailed, easy-to-follow setup instructions.</p>
+                </div>
+                <div class="flex items-start space-x-4 bg-white/10 p-5 rounded-2xl backdrop-blur-md border border-white/10">
+                    <span class="text-brandAccent text-xl font-bold">✓</span>
+                    <p class="text-sm leading-relaxed">Built-in battery pack for your phone (20+ hours of continuous power).</p>
+                </div>
+                <div class="flex items-start space-x-4 bg-white/10 p-5 rounded-2xl backdrop-blur-md border border-white/10">
+                    <span class="text-brandAccent text-xl font-bold">✓</span>
+                    <p class="text-sm leading-relaxed">A series of digital signs, ready to print and display at your venue.</p>
+                </div>
+                <div class="flex items-start space-x-4 bg-white/10 p-5 rounded-2xl backdrop-blur-md border border-white/10">
+                    <span class="text-brandAccent text-xl font-bold">✓</span>
+                    <p class="text-sm leading-relaxed">A digital copy of all recorded voice messages to keep forever.</p>
+                </div>
+                <div class="flex items-start space-x-4 bg-white/10 p-5 rounded-2xl backdrop-blur-md border border-white/10">
+                    <span class="text-brandAccent text-xl font-bold">✓</span>
+                    <p class="text-sm leading-relaxed">Prepaid return shipping included.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / FINAL CTA -->
+    <footer class="py-24 text-center bg-brandCream border-t border-gray-200">
+        <div class="max-w-3xl mx-auto px-6 space-y-6">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold text-brandBlue">Don't let your special moments pass by without hearing their voices.</h2>
+            <p class="text-gray-600">Secure your date today and preserve your memories for a lifetime.</p>
+            <div class="pt-4">
+                <a href="#collection" class="inline-block px-8 py-4 bg-brandBlue text-white font-medium rounded-full shadow-xl hover:bg-brandBlue/90 hover:scale-105 transition transform">
+                    Secure Your Date Today
+                </a>
+            </div>
+            <p class="text-xs text-gray-400 pt-12">&copy; 2026 HeyyItsMe. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
