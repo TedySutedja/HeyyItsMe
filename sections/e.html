@@ -1,69 +1,159 @@
-<!-- SECTION E: COLLECTION CATALOG -->
-<section id="collection" class="py-24 bg-brandCream relative">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
-            <span class="text-xs uppercase tracking-widest text-brandAccent font-semibold">Curated Collection</span>
-            <h2 class="font-serif text-3xl md:text-5xl font-bold text-brandBlue">The Vintage Telephones</h2>
-            <p class="text-gray-600 font-light text-sm md:text-base">Each piece is meticulously restored to bring timeless elegance and charm to your special day.</p>
+<!-- SECTION 4: COLLECTION CATALOG & SLIDER -->
+<section id="collection" class="py-24 relative overflow-hidden bg-brandCream/50">
+    <!-- Background Image for Collection Section -->
+    <div class="absolute inset-0 z-0">
+        <img src="assets/images/collection/BGCollection.png" alt="Collection Background" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=1200'">
+        <div class="absolute inset-0 bg-black/55 backdrop-blur-[1px]"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <!-- Header & Slider Controls -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div class="space-y-4 max-w-xl">
+                <span class="text-xs uppercase tracking-widest text-emerald-300 font-semibold drop-shadow">The Phones Catalog</span>
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-white drop-shadow-lg">Find Your Statement Piece</h2>
+                <p class="text-gray-200 drop-shadow">Select the perfect telephone style to match your event theme and aesthetic.</p>
+            </div>
+            <!-- Slider Arrows -->
+            <div class="flex items-center gap-3">
+                <button id="slider-prev" aria-label="Previous Slide" class="w-12 h-12 rounded-full border border-white/30 bg-black/40 text-white backdrop-blur-md flex items-center justify-center hover:bg-white hover:text-brandBlue hover:border-white transition shadow-sm">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button id="slider-next" aria-label="Next Slide" class="w-12 h-12 rounded-full border border-white/30 bg-black/40 text-white backdrop-blur-md flex items-center justify-center hover:bg-white hover:text-brandBlue hover:border-white transition shadow-sm">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Item 1 -->
-            <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
-                <div class="h-64 overflow-hidden bg-gray-100">
-                    <img src="assets/images/phone1.png" alt="Caecilia" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=600'">
-                </div>
-                <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h3 class="font-serif text-xl font-bold text-brandBlue">Caecilia</h3>
-                            <span class="text-brandAccent font-semibold text-sm">$290</span>
-                        </div>
-                        <p class="text-gray-600 text-sm font-light">Classic rotary dial design with a sophisticated cream and brass finish.</p>
+        <!-- Carousel Slider Track -->
+        <div class="relative w-full">
+            <div id="collection-slider" class="flex gap-8 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-6">
+                
+                <!-- 1. Caecilia -->
+                <div class="min-w-[300px] sm:min-w-[350px] md:min-w-[380px] snap-start bg-black/40 backdrop-blur-md rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 flex flex-col justify-between p-8 space-y-6 text-white group">
+                    <div class="h-64 rounded-2xl overflow-hidden bg-white/10 flex items-center justify-center">
+                        <img src="assets/images/collection/Caecilia.png" alt="Caecilia Telephone" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x400/1e293b/ffffff?text=Caecilia'">
                     </div>
-                    <a href="#booking" class="block text-center w-full py-3 bg-brandBlue text-white rounded-xl text-sm font-medium hover:bg-brandBlue/90 transition">
-                        Check Availability
-                    </a>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-serif text-2xl font-bold text-white">Caecilia</h3>
+                            <span class="text-xl font-semibold text-emerald-300">$290</span>
+                        </div>
+                        <p class="text-sm text-gray-300 italic">White, elegant and quietly confident.</p>
+                    </div>
+                    <a href="#booking" class="block w-full py-3.5 text-center bg-white/10 hover:bg-white hover:text-brandBlue rounded-2xl text-sm font-medium transition duration-300 border border-white/20">Hire This Model</a>
                 </div>
-            </div>
 
-            <!-- Item 2 -->
-            <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
-                <div class="h-64 overflow-hidden bg-gray-100">
-                    <img src="assets/images/phone2.png" alt="Daphne" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=600'">
-                </div>
-                <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h3 class="font-serif text-xl font-bold text-brandBlue">Daphne</h3>
-                            <span class="text-brandAccent font-semibold text-sm">$290</span>
-                        </div>
-                        <p class="text-gray-600 text-sm font-light">Charming vintage aesthetic with rich textured tones and classic silhouette.</p>
+                <!-- 2. Daphne -->
+                <div class="min-w-[300px] sm:min-w-[350px] md:min-w-[380px] snap-start bg-black/40 backdrop-blur-md rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 flex flex-col justify-between p-8 space-y-6 text-white group">
+                    <div class="h-64 rounded-2xl overflow-hidden bg-white/10 flex items-center justify-center">
+                        <img src="assets/images/collection/Daphne.png" alt="Daphne Telephone" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x400/1e293b/ffffff?text=Daphne'">
                     </div>
-                    <a href="#booking" class="block text-center w-full py-3 bg-brandBlue text-white rounded-xl text-sm font-medium hover:bg-brandBlue/90 transition">
-                        Check Availability
-                    </a>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-serif text-2xl font-bold text-white">Daphne</h3>
+                            <span class="text-xl font-semibold text-emerald-300">$290</span>
+                        </div>
+                        <p class="text-sm text-gray-300 italic">The Audio guestbook in sunshine yellow.</p>
+                    </div>
+                    <a href="#booking" class="block w-full py-3.5 text-center bg-white/10 hover:bg-white hover:text-brandBlue rounded-2xl text-sm font-medium transition duration-300 border border-white/20">Hire This Model</a>
                 </div>
-            </div>
 
-            <!-- Item 3 -->
-            <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
-                <div class="h-64 overflow-hidden bg-gray-100">
-                    <img src="assets/images/phone3.png" alt="Duke" class="w-full h-full object-cover hover:scale-105 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=600'">
-                </div>
-                <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
-                    <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h3 class="font-serif text-xl font-bold text-brandBlue">Duke</h3>
-                            <span class="text-brandAccent font-semibold text-sm">$320</span>
-                        </div>
-                        <p class="text-gray-600 text-sm font-light">Bold, stately design for high-end celebrations and distinguished events.</p>
+                <!-- 3. Duke -->
+                <div class="min-w-[300px] sm:min-w-[350px] md:min-w-[380px] snap-start bg-black/40 backdrop-blur-md rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 flex flex-col justify-between p-8 space-y-6 text-white group">
+                    <div class="h-64 rounded-2xl overflow-hidden bg-white/10 flex items-center justify-center">
+                        <img src="assets/images/collection/Duke.png" alt="Duke Telephone" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x400/1e293b/ffffff?text=Duke'">
                     </div>
-                    <a href="#booking" class="block text-center w-full py-3 bg-brandBlue text-white rounded-xl text-sm font-medium hover:bg-brandBlue/90 transition">
-                        Check Availability
-                    </a>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-serif text-2xl font-bold text-white">Duke</h3>
+                            <span class="text-xl font-semibold text-emerald-300">$320</span>
+                        </div>
+                        <p class="text-sm text-gray-300 italic">Enduring elegance, poise, and drama by design.</p>
+                    </div>
+                    <a href="#booking" class="block w-full py-3.5 text-center bg-white/10 hover:bg-white hover:text-brandBlue rounded-2xl text-sm font-medium transition duration-300 border border-white/20">Hire This Model</a>
                 </div>
+
+                <!-- 4. Marianne -->
+                <div class="min-w-[300px] sm:min-w-[350px] md:min-w-[380px] snap-start bg-black/40 backdrop-blur-md rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 flex flex-col justify-between p-8 space-y-6 text-white group">
+                    <div class="h-64 rounded-2xl overflow-hidden bg-white/10 flex items-center justify-center">
+                        <img src="assets/images/collection/Marianne.png" alt="Marianne Telephone" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x400/1e293b/ffffff?text=Marianne'">
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-serif text-2xl font-bold text-white">Marianne</h3>
+                            <span class="text-xl font-semibold text-emerald-300">$290</span>
+                        </div>
+                        <p class="text-sm text-gray-300 italic">Softly nostalgic and timeless.</p>
+                    </div>
+                    <a href="#booking" class="block w-full py-3.5 text-center bg-white/10 hover:bg-white hover:text-brandBlue rounded-2xl text-sm font-medium transition duration-300 border border-white/20">Hire This Model</a>
+                </div>
+
+                <!-- 5. The Chief -->
+                <div class="min-w-[300px] sm:min-w-[350px] md:min-w-[380px] snap-start bg-black/40 backdrop-blur-md rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 flex flex-col justify-between p-8 space-y-6 text-white group">
+                    <div class="h-64 rounded-2xl overflow-hidden bg-white/10 flex items-center justify-center">
+                        <img src="assets/images/collection/The Chief.png" alt="The Chief Telephone" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x400/1e293b/ffffff?text=The+Chief'">
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-serif text-2xl font-bold text-white">The Chief</h3>
+                            <span class="text-xl font-semibold text-emerald-300">$290</span>
+                        </div>
+                        <p class="text-sm text-gray-300 italic">Commands attention while holding every voice.</p>
+                    </div>
+                    <a href="#booking" class="block w-full py-3.5 text-center bg-white/10 hover:bg-white hover:text-brandBlue rounded-2xl text-sm font-medium transition duration-300 border border-white/20">Hire This Model</a>
+                </div>
+
+                <!-- 6. The Chrome -->
+                <div class="min-w-[300px] sm:min-w-[350px] md:min-w-[380px] snap-start bg-black/40 backdrop-blur-md rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 flex flex-col justify-between p-8 space-y-6 text-white group">
+                    <div class="h-64 rounded-2xl overflow-hidden bg-white/10 flex items-center justify-center">
+                        <img src="assets/images/collection/The Chrome.png" alt="The Chrome Telephone" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x400/1e293b/ffffff?text=The+Chrome'">
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-serif text-2xl font-bold text-white">The Chrome</h3>
+                            <span class="text-xl font-semibold text-emerald-300">$320</span>
+                        </div>
+                        <p class="text-sm text-gray-300 italic">Sleek, sculptural and deliberate guestbook.</p>
+                    </div>
+                    <a href="#booking" class="block w-full py-3.5 text-center bg-white/10 hover:bg-white hover:text-brandBlue rounded-2xl text-sm font-medium transition duration-300 border border-white/20">Hire This Model</a>
+                </div>
+
+                <!-- 7. The Victorian -->
+                <div class="min-w-[300px] sm:min-w-[350px] md:min-w-[380px] snap-start bg-black/40 backdrop-blur-md rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 flex flex-col justify-between p-8 space-y-6 text-white group">
+                    <div class="h-64 rounded-2xl overflow-hidden bg-white/10 flex items-center justify-center">
+                        <img src="assets/images/collection/The Victorian.png" alt="The Victorian Telephone" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x400/1e293b/ffffff?text=The+Victorian'">
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-serif text-2xl font-bold text-white">The Victorian</h3>
+                            <span class="text-xl font-semibold text-emerald-300">$320</span>
+                        </div>
+                        <p class="text-sm text-gray-300 italic">Enduring elegance and vintage Victorian styling.</p>
+                    </div>
+                    <a href="#booking" class="block w-full py-3.5 text-center bg-white/10 hover:bg-white hover:text-brandBlue rounded-2xl text-sm font-medium transition duration-300 border border-white/20">Hire This Model</a>
+                </div>
+
             </div>
         </div>
     </div>
 </section>
+
+<!-- Collection Slider Script -->
+<script>
+    (function() {
+        const slider = document.getElementById('collection-slider');
+        const prevBtn = document.getElementById('slider-prev');
+        const nextBtn = document.getElementById('slider-next');
+
+        if (slider && prevBtn && nextBtn) {
+            const scrollAmount = 380; // card width + gap approximation
+            prevBtn.addEventListener('click', () => {
+                slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+            nextBtn.addEventListener('click', () => {
+                slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+        }
+    })();
+</script>
