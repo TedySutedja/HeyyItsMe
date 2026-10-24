@@ -1,45 +1,22 @@
-<!-- SECTION 5B: BOOKING FORM (GOOGLE FORM INTEGRATION) -->
+<!-- SECTION 5B: EMBEDDED GOOGLE FORM -->
 <section class="py-12 bg-white relative">
-    <div class="max-w-xl mx-auto px-6">
-        <!-- Ganti action dengan URL Google Form Anda dan metode POST -->
-        <form action="MASUKKAN_URL_ACTION_GOOGLE_FORM_ANDA_DI_SINI" method="POST" target="_hidden_iframe" class="bg-brandCream p-8 md:p-10 rounded-[2.5rem] shadow-xl border border-gray-100 space-y-4" onsubmit="submitted=true;">
-            <h3 class="font-serif text-2xl font-bold text-brandBlue mb-4">Availability Inquiry</h3>
+    <div class="max-w-3xl mx-auto px-6">
+        <div class="bg-brandCream p-6 md:p-10 rounded-[2.5rem] shadow-xl border border-gray-100 overflow-hidden">
+            <h3 class="font-serif text-2xl font-bold text-brandBlue mb-6 text-center">Availability Inquiry</h3>
             
-            <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-gray-600 mb-1">Your Name</label>
-                <!-- Ganti value entry.XXXXX dengan attribute name/entry dari Google Form Anda -->
-                <input type="text" name="entry.NAMA_FIELD_ANDA" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brandBlue bg-white text-sm" placeholder="e.g. Riela & Partner">
+            <!-- Google Form Responsive Embed Container -->
+            <div class="w-full overflow-hidden rounded-2xl bg-white border border-gray-200">
+                <iframe 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSfDiZmG4pPako1qoWxbLMZP5bAeuDbyDTeQdQWmOMKB5Fq61w/viewform?embedded=true" 
+                    width="100%" 
+                    height="700" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0"
+                    class="w-full">
+                    Memuat…
+                </iframe>
             </div>
-            
-            <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-gray-600 mb-1">Event Date</label>
-                <input type="date" name="entry.TANGGAL_FIELD_ANDA" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brandBlue bg-white text-sm">
-            </div>
-            
-            <div>
-                <label class="block text-xs uppercase tracking-wider font-semibold text-gray-600 mb-1">Preferred Telephone Model</label>
-                <select name="entry.MODEL_FIELD_ANDA" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brandBlue bg-white text-sm">
-                    <option value="Caecilia">Caecilia ($290)</option>
-                    <option value="Daphne">Daphne ($290)</option>
-                    <option value="Duke">Duke ($320)</option>
-                    <option value="Marianne">Marianne ($290)</option>
-                    <option value="The Chief">The Chief ($290)</option>
-                    <option value="The Chrome">The Chrome ($320)</option>
-                    <option value="The Victorian">The Victorian ($320)</option>
-                </select>
-            </div>
-            
-            <button type="submit" class="w-full py-4 bg-brandBlue text-white font-medium rounded-xl shadow-lg hover:bg-brandBlue/90 transition text-sm tracking-wider uppercase">
-                Check Availability & Book
-            </button>
-        </form>
-        
-        <!-- Iframe tersembunyi agar halaman tidak pindah / reload saat form dikirim -->
-        <iframe name="_hidden_iframe" id="_hidden_iframe" style="display:none;" onload="if(submitted){alert('Thank you! Your inquiry has been sent successfully.'); window.location.reload();}"></iframe>
+        </div>
     </div>
 </section>
-
-<script>
-    // Variabel pendukung untuk iframe interaksi form
-    let submitted = false;
-</script>
